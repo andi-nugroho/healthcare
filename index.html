@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayHealthy - Medical Care Platform</title>
+
+    <link rel="icon" type="healthcare.png" href="assets/images/healthcare.png">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                StayHealthy
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#doctors">Doctors</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" onclick="showSection('login')">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button class="btn btn-primary" onclick="showSection('signup')">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </button>
+                <button class="btn btn-outline" id="logoutBtn" style="display: none;" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Notification message</span>
+        <i class="fas fa-times" onclick="hideNotification()" style="cursor: pointer; margin-left: auto;"></i>
+    </div>
+
+    <main>
+        <section class="hero section active" id="home">
+            <div class="container">
+                <h1>Your Health, Our Priority</h1>
+                <p>Connect with qualified doctors, book appointments, and manage your healthcare journey</p>
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showSection('home')">Home</button>
+                    <button class="tab-btn" onclick="showSection('signup')">Sign Up</button>
+                    <button class="tab-btn" onclick="showSection('login')">Login</button>
+                    <button class="tab-btn" onclick="showSection('doctor-search')">Find Doctors</button>
+                    <button class="tab-btn" onclick="showSection('profile')">Profile</button>
+                    <button class="tab-btn" onclick="showSection('reviews')">Reviews</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="features section active" id="services">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 2rem;">Our Services</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+                        <h3>Expert Doctors</h3>
+                        <p>Connect with qualified and experienced healthcare professionals</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+                        <h3>Easy Booking</h3>
+                        <p>Book appointments with your preferred doctors in just a few clicks</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-video"></i></div>
+                        <h3>Instant Consultation</h3>
+                        <p>Get immediate medical advice through video consultations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="forms-section section" id="auth">
+            <div class="container">
+                <h2 style="text-align: center; color: #333;">Join StayHealthy</h2>
+                <div class="forms-container">
+                    <div class="form-card" id="signup">
+                        <h3><i class="fas fa-user-plus"></i> Create Account</h3>
+                        <form id="signupForm">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                                <span class="error-message" id="fullNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                                <span class="error-message" id="phoneError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password *</label>
+                                <input type="password" id="password" name="password" required>
+                                <span class="error-message" id="passwordError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm Password *</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                <span class="error-message" id="confirmPasswordError"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;"><i class="fas fa-user-plus"></i> Create Account</button>
+                        </form>
+                    </div>
+
+                    <div class="form-card" id="login">
+                        <h3><i class="fas fa-sign-in-alt"></i> Login</h3>
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="loginEmail">Email Address *</label>
+                                <input type="email" id="loginEmail" name="loginEmail" required>
+                                <span class="error-message" id="loginEmailError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Password *</label>
+                                <input type="password" id="loginPassword" name="loginPassword" required>
+                                <span class="error-message" id="loginPasswordError"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;"><i class="fas fa-sign-in-alt"></i> Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="doctor-search section" id="doctor-search">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 2rem;">Find Doctors</h2>
+                <div class="search-container">
+                    <input type="text" class="search-input" id="doctorSearch" placeholder="Search doctors by name or specialization...">
+                    <select class="search-input" id="specializationFilter">
+                        <option value="">All Specializations</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="dermatology">Dermatology</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="orthopedics">Orthopedics</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="searchDoctors()"><i class="fas fa-search"></i> Search</button>
+                </div>
+                <div class="doctor-grid" id="doctorGrid"></div>
+            </div>
+        </section>
+
+        <section class="profile-section section" id="profile">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 2rem;">User Profile</h2>
+                <div class="profile-header">
+                    <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                    <div>
+                        <h3 id="profileName">John Doe</h3>
+                        <p id="profileEmail">john.doe@example.com</p>
+                        <button class="btn btn-outline" onclick="editProfile()"><i class="fas fa-edit"></i> Edit Profile</button>
+                    </div>
+                </div>
+                <div class="form-card" id="profileEditForm" style="display: none;">
+                    <h3><i class="fas fa-user-edit"></i> Edit Profile</h3>
+                    <form id="profileForm">
+                        <div class="form-group">
+                            <label for="profileNameEdit">Full Name</label>
+                            <input type="text" id="profileNameEdit" name="profileNameEdit">
+                        </div>
+                        <div class="form-group">
+                            <label for="profileEmailEdit">Email</label>
+                            <input type="email" id="profileEmailEdit" name="profileEmailEdit">
+                        </div>
+                        <div class="form-group">
+                            <label for="profilePhoneEdit">Phone</label>
+                            <input type="tel" id="profilePhoneEdit" name="profilePhoneEdit">
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Changes</button>
+                        <button type="button" class="btn btn-outline" onclick="cancelEditProfile()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="reviews-section section" id="reviews">
+            <div class="container">
+                <h2 style="text-align: center; color: #333; margin-bottom: 2rem;">Reviews & Feedback</h2>
+                <div class="review-form">
+                    <h3><i class="fas fa-star"></i> Leave a Review</h3>
+                    <form id="reviewForm">
+                        <div class="form-group">
+                            <label>Rating</label>
+                            <div class="rating-selector" id="ratingSelector">
+                                <span class="star" data-rating="1">★</span>
+                                <span class="star" data-rating="2">★</span>
+                                <span class="star" data-rating="3">★</span>
+                                <span class="star" data-rating="4">★</span>
+                                <span class="star" data-rating="5">★</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewText">Your Review</label>
+                            <textarea id="reviewText" name="reviewText" rows="4" placeholder="Share your experience..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="reviewSubmitBtn" disabled><i class="fas fa-paper-plane"></i> Submit Review</button>
+                    </form>
+                </div>
+                <div id="reviewsList">
+                    <h3>Recent Reviews</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
