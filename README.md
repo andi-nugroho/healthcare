@@ -2,7 +2,7 @@
 
 Selamat datang di repositori proyek StayHealthy! Ini adalah aplikasi web front-end yang dirancang untuk mensimulasikan platform layanan kesehatan, di mana pengguna dapat mencari dokter, membuat janji temu, dan mengelola profil kesehatan mereka.
 
-[![Website Status](https://img.shields.io/website?up_message=online&url=https%3A%2F%2Fandi-nugroho.github.io%2Fhealthcare%2F)](https://andi-nugroho.github.io/healthcare/)
+<img width="1400" height="804" alt="Macbook-Air-andi-nugroho github io" src="https://github.com/user-attachments/assets/e9d0d6df-8446-4232-8505-22fde9c3c697" />
 
 ---
 
